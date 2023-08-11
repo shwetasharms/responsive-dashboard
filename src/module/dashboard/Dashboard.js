@@ -239,7 +239,7 @@ function Dashboard() {
                   <Grid item xs={12} md={4}>
                     <Item>
                       <img src={math} alt="total Assessment" />
-                      <Typography variant='body2'>Math Assessment</Typography>
+                      <Typography variant='body2'>Test Assessment</Typography>
                       <Typography variant='body2'>Job</Typography>
                       <Divider />
                       <CardActions disableSpacing>
