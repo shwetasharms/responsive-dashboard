@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { Avatar, Button, Card, CardContent, Checkbox, Container, FormControlLabel, Grid, Link, Paper, TextField, Typography } from '@mui/material';
 import { LockOutlined } from '@mui/icons-material';
-import { registerUser } from '../../_services/register/registerUser.service';
+// import { registerUser } from '../../_services/register/registerUser.service';
 
 function Register() {
     const navigate = useNavigate();

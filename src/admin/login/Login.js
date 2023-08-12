@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Avatar, Button,  Grid, Link, Paper, TextField, Typography } from '@mui/material';
 import { LockOutlined } from '@mui/icons-material';
 import {  setToken } from '../../_helper/secureToken';
-import {login} from "../../_services/auth.service"
+// import {login} from "../../_services/auth.service"
 
 function Login() {
     const navigate = useNavigate();
@@ -42,22 +42,22 @@ function Login() {
 			email: email,
 			password: password,
 		};
-		await login(data).then(function (response) {
-			if (response.status == 200) {
-				if (response.headers) {
-					setToken(response.headers.authorization)
-					navigate("/")
-				} else {
-					console.log(response);
-				}
-			} else {
-				console.log("Something Went Wrong, Not able to login");
-				setErrorMsg(
-						<Typography color="error" variant="caption" display="block" gutterBottom>Unauthorized access. Please register an account to proceed with login.</Typography>
-				);
-			}
-		}).catch(function (error) {
-		});
+		// await login(data).then(function (response) {
+		// 	if (response.status == 200) {
+		// 		if (response.headers) {
+		// 			setToken(response.headers.authorization)
+		// 			navigate("/")
+		// 		} else {
+		// 			console.log(response);
+		// 		}
+		// 	} else {
+		// 		console.log("Something Went Wrong, Not able to login");
+		// 		setErrorMsg(
+		// 				<Typography color="error" variant="caption" display="block" gutterBottom>Unauthorized access. Please register an account to proceed with login.</Typography>
+		// 		);
+		// 	}
+		// }).catch(function (error) {
+		// });
 	}
 
     // if (isLogin()) {
