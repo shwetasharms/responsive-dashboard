@@ -145,10 +145,10 @@ function Dashboard() {
 
 
               <Box > 
-                <Grid container sx={{ height:130, border: "1px solid #DADCE0", borderRadius: "12px" }}>
+                <Grid container sx={{ height:{lg:130,xs:"100%"}, border: "1px solid #DADCE0", borderRadius: "12px" }}>
 
-                  <Grid columns={{ xs: 4, sm: 8, md: 2, lg:2 }} sx={{height:"100%",borderRight:"1px solid #DADCE0 "}}>
-                <Grid item  order={{ xs: 1, sm: 1 ,lg:1}} sx={{width:"100%",height:"100%",paddingLeft:"20px",display:"grid",alignContent:"Center",justifyContent:"left"}}>
+                  <Grid xs={6} sm={12} md={4} lg={1.5} order={{ xs: 1, sm: 1 ,lg:1}} sx={{height:"100%",borderRight:"1px solid #DADCE0 "}}>
+                <Grid item   sx={{width:"100%",height:"100%",paddingLeft:"20px",display:"grid",alignContent:"Center",justifyContent:"left"}}>
                   <Typography variant='body2' sx={{ fontSize: "14px", color: "#1C4980" }}>Total Assessment</Typography>
 
                       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
