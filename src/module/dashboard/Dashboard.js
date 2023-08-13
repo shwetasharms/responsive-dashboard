@@ -77,6 +77,12 @@ const Item = styled(Paper)(({ theme }) => ({
 function Dashboard() {
   const [value, setValue] = React.useState(0);
 
+  const [modalOpen, setModalOpen] = React.useState(false);
+
+  const openModal = () => {
+      setModalOpen(true);
+  };
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -250,8 +256,7 @@ function Dashboard() {
                 <Grid container spacing={2}>
                   <Grid item xs={12} md={4} >
                     <Item sx={{ backgroundColor: "#F6F8FA", textAlign: "center", p: 4 }}>
-                      <img src={newAssessments} alt="total Assessment" />
-
+                      <img src={newAssessments} alt="total Assessment" onClick={openModal} style={{cursor:"pointer"}}/>
                       <Typography variant='body2' sx={{ fontSize: "18px", color: "#1C4980", fontWeight: 500 }}>New Assessment</Typography>
                       <Typography variant='body2' sx={{ fontSize: "14.52px", color: "#1C4980", marginTop: 2 }}>From here you can add questions of multiple types like MCQ's, subjective (text pr paragrapgh)!</Typography>
                       {/* <Typography variant='body2'>Total Assessment</Typography> */}
@@ -307,7 +312,7 @@ function Dashboard() {
                     </Item>
                   </Grid>
                 </Grid></Box>
-              <CreateAssessment />
+              <CreateAssessment modalOpen={modalOpen} setModalOpen={setModalOpen}/>
             </Box>
           </Grid>
         </Grid>
