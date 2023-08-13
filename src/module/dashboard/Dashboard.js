@@ -1,4 +1,4 @@
-import { CardActions, CardContent, CardHeader, Container, IconButton, Tab, Tabs, Typography } from '@mui/material'
+import { CardActions, CardContent, CardHeader, Container, Drawer, IconButton, Tab, Tabs, Typography } from '@mui/material'
 import React from 'react'
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
@@ -26,6 +26,7 @@ import newAssessments from "../../assests/images/newAssessments.svg"
 import math from "../../assests/images/math.svg"
 import lp from "../../assests/images/lp.svg"
 import share from "../../assests/images/share.svg"
+import {  useMediaQuery, useTheme } from '@mui/material';
 
 
 
@@ -76,11 +77,16 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 function Dashboard() {
   const [value, setValue] = React.useState(0);
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm')); 
   const [modalOpen, setModalOpen] = React.useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(!isMobile);
 
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
   const openModal = () => {
-      setModalOpen(true);
+    setModalOpen(true);
   };
 
   const handleChange = (event, newValue) => {
@@ -103,12 +109,10 @@ function Dashboard() {
   }
   return (
     <Grid container spacing={2} style={container}>
-      <Grid item xs={12} md={1.5} style={sidebar}>
+      {!isMobile && <div className="sidebar">
+      <Grid item xs={12} md={2} style={sidebar}>
         <Box
-          // sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
           role="presentation"
-        // onClick={toggleDrawer(anchor, false)}
-        // onKeyDown={toggleDrawer(anchor, false)}
         >
           <List sx={{ padding: "16px 20px 20px 30px" }}>
             <ListItem sx={{ display: "flex", flexDirection: "column" }}>
@@ -131,31 +135,70 @@ function Dashboard() {
 
         </Box>
       </Grid>
-      <Grid item xs={12} md={10.5} >
+        </div>}
+
+      {/* Mobile: Sliding Drawer */}
+      {isMobile && (
+        <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer}>
+            <Grid item xs={12} md={2} style={sidebar}>
+        <Box
+          role="presentation"
+        >
+          <List sx={{ padding: "16px 20px 20px 30px" }}>
+            <ListItem sx={{ display: "flex", flexDirection: "column" }}>
+              <img src={dashboard} />
+              <Typography sx={{ fontSize: "12px" }}> Dashboard</Typography>
+            </ListItem>
+            <ListItem sx={{ display: "flex", flexDirection: "column" }}>
+              <img src={assessment} />
+              <Typography sx={{ fontSize: "12px" }}> Assessment</Typography>
+            </ListItem>
+            <ListItem sx={{ display: "flex", flexDirection: "column" }}>
+              <img src={myLibrary} />
+              <Typography sx={{ fontSize: "12px" }}> My Library</Typography>
+            </ListItem>
+            <ListItem sx={{ display: "flex", flexDirection: "column", padding: "10px 20px 10px 20px", border: "2px solid #0073E6", borderRadius: "8px", }} selected>
+              <img src={admin_meds} />
+              <Typography sx={{ fontSize: "12px" }}> Round Status</Typography>
+            </ListItem>
+          </List>
+
+        </Box>
+      </Grid>
+        </Drawer>
+      )}
+    
+      <Grid item xs={12} md={10} >
         <Grid sx={main}>
           <Grid >
             <Box sx={header}>
               <Box sx={innerBox}>
-                <Typography style={heading}>Assessment</Typography> <Divider orientation="vertical" variant="middle" flexItem />
+                <Grid>
+                <Typography style={heading}>Assessment</Typography> 
+                </Grid>
+                <Divider orientation="vertical" variant="middle" flexItem />
+                <Grid>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" >
                   <Tab label="My Assessments" {...a11yProps(0)} sx={{ textTransform: "none" }} />
+                  <Tab label="My Assessments" {...a11yProps(0)} sx={{ textTransform: "none" }} />
+
                 </Tabs>
+                </Grid>
+
               </Box>
+              <Grid>
               <img src={phone} />
+              </Grid>
             </Box>
           </Grid>
           <Grid>
             <Box sx={{ padding: "20px" }}>
               <Typography sx={{ fontSize: "18px", color: "#1C4980", paddingBottom: "16px" }}>Assessment Overview</Typography>
-
-
-
-              <Box > 
-                <Grid container sx={{ height:{lg:130,xs:"100%"}, border: "1px solid #DADCE0", borderRadius: "12px" }}>
-
-                  <Grid xs={6} sm={12} md={4} lg={1.5} order={{ xs: 1, sm: 1 ,lg:1}} sx={{height:"100%",borderRight:"1px solid #DADCE0 "}}>
-                <Grid item   sx={{width:"100%",height:"100%",paddingLeft:"20px",display:"grid",alignContent:"Center",justifyContent:"left"}}>
-                  <Typography variant='body2' sx={{ fontSize: "14px", color: "#1C4980" }}>Total Assessment</Typography>
+              <Box >
+                <Grid container sx={{ height: 130, border: "1px solid #DADCE0", borderRadius: "12px" }}>
+                  <Grid columns={{ xs: 4, sm: 8, md: 2, lg: 2 }} sx={{ height: "100%", borderRight: "1px solid #DADCE0 " }}>
+                    <Grid item order={{ xs: 1, sm: 1, lg: 1 }} sx={{ width: "100%", height: "100%", paddingLeft: "20px", display: "grid", alignContent: "Center", justifyContent: "left" }}>
+                      <Typography variant='body2' sx={{ fontSize: "14px", color: "#1C4980" }}>Total Assessment</Typography>
 
                       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                         <img src={totalAssessment} alt="total Assessment" />
@@ -168,36 +211,36 @@ function Dashboard() {
                     </Grid>
                   </Grid>
 
-                <Grid xs={12} sm={12} md={4} lg={4} order={{ xs: 3, sm: 3 ,lg:2}} sx={{height:"100%", borderRight: { lg: '1px solid #DADCE0' },borderTop: { lg:'none', xs: '1px solid #DADCE0' }}}>
-                <Grid item    sx={{height:"100%",paddingLeft:"20px",display:"grid",alignContent:"center" ,justifyContent:"start"}}>
-                  <Typography variant='body2' sx={{ fontSize: "14px" }}>Candidates Source</Typography>
-                  <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-                    <img src={candidates} alt="candidates" />
-                    <CardContent sx={{ flex: '1 0 auto' }}>
-                      <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignItems: "center" }}>
-                        11,145<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
-                      </Typography>
-                      <Typography style={{ fontSize: "12px" }}>
-                        Total Candidate
-                      </Typography>
-                    </CardContent>
-                    <Divider orientation="vertical" variant="middle" flexItem />
-                    <CardContent sx={{ flex: '1 0 auto' }}>
-                      <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignItems: "center" }}>
-                        1,14<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
-                      </Typography>
-                      <Typography style={{ fontSize: "12px" }}>
-                        Who Attempt
-                      </Typography>
-                    </CardContent>
-                  </Box>
-                </Grid>
-                </Grid>
+                  <Grid xs={2} sm={2} md={4} lg={4} sx={{ height: "100%", borderRight: "1px solid #DADCE0 " }}>
+                    <Grid item order={{ xs: 3, sm: 3, lg: 2 }} sx={{ height: "100%", paddingLeft: "20px", display: "grid", alignContent: "center", justifyContent: "start" }}>
+                      <Typography variant='body2' sx={{ fontSize: "14px" }}>Candidates Source</Typography>
+                      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                        <img src={candidates} alt="candidates" />
+                        <CardContent sx={{ flex: '1 0 auto' }}>
+                          <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignItems: "center" }}>
+                            11,145<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
+                          </Typography>
+                          <Typography style={{ fontSize: "12px" }}>
+                            Total Candidate
+                          </Typography>
+                        </CardContent>
+                        <Divider orientation="vertical" variant="middle" flexItem />
+                        <CardContent sx={{ flex: '1 0 auto' }}>
+                          <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignItems: "center" }}>
+                            1,14<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
+                          </Typography>
+                          <Typography style={{ fontSize: "12px" }}>
+                            Who Attempt
+                          </Typography>
+                        </CardContent>
+                      </Box>
+                    </Grid>
+                  </Grid>
 
 
-                <Grid xs={12} sm={12} md={5} lg={5} order={{ xs: 4, sm: 4,lg:3}} sx={{height:"100%",borderRight: { lg: '1px solid #DADCE0' },borderTop: { lg:'none', xs: '1px solid #DADCE0' }}}>
-                <Grid item   sx={{width:"100%",height:"100%",paddingLeft:"20px",display:"grid",alignContent:"Center",justifyContent:"start"}}>
-                  <Typography variant='body2' sx={{ fontSize: "14px" }}>Candidates Source</Typography>
+                  <Grid xs={2} sm={2} md={5} lg={5} sx={{ height: "100%", borderRight: "1px solid #DADCE0 " }}>
+                    <Grid item order={{ xs: 4, sm: 4, lg: 3 }} sx={{ width: "100%", height: "100%", paddingLeft: "20px", display: "grid", alignContent: "Center", justifyContent: "start" }}>
+                      <Typography variant='body2' sx={{ fontSize: "14px" }}>Candidates Source</Typography>
 
                       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                         <img src={candidateSource} alt="candidateSource" />
@@ -232,19 +275,19 @@ function Dashboard() {
                   </Grid>
 
 
-                <Grid xs={6} sm={6}  md={6} lg={1.5} order={{ xs: 2, sm: 2 ,lg:4}} sx={{height:"100%"}}>
-                <Grid item   sx={{width:"100%",height:"100%",paddingLeft:"20px",display:"grid",alignItems:"Center",justifyContent:"start"}} >
-                  <Typography variant='body2' sx={{ fontSize: "14px" }}>Total Purpose</Typography>
-                  <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-                    <img src={totalAssessment} alt="total Assessment" />
-                    <CardContent sx={{ flex: '1 0 auto' }}>
-                      <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600 }}>
-                        34
-                      </Typography>
-                    </CardContent>
-                  </Box>
-                </Grid>
-                </Grid>
+                  <Grid sx={{ height: "100%" }}>
+                    <Grid item order={{ xs: 2, sm: 2, lg: 4 }} sx={{ width: "100%", height: "100%", paddingLeft: "20px", display: "grid", alignItems: "Center", justifyContent: "start" }} >
+                      <Typography variant='body2' sx={{ fontSize: "14px" }}>Total Purpose</Typography>
+                      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                        <img src={totalAssessment} alt="total Assessment" />
+                        <CardContent sx={{ flex: '1 0 auto' }}>
+                          <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600 }}>
+                            34
+                          </Typography>
+                        </CardContent>
+                      </Box>
+                    </Grid>
+                  </Grid>
 
                 </Grid>
               </Box>
@@ -256,7 +299,7 @@ function Dashboard() {
                 <Grid container spacing={2}>
                   <Grid item xs={12} md={4} >
                     <Item sx={{ backgroundColor: "#F6F8FA", textAlign: "center", p: 4 }}>
-                      <img src={newAssessments} alt="total Assessment" onClick={openModal} style={{cursor:"pointer"}}/>
+                      <img src={newAssessments} alt="total Assessment" onClick={openModal} style={{ cursor: "pointer" }} />
                       <Typography variant='body2' sx={{ fontSize: "18px", color: "#1C4980", fontWeight: 500 }}>New Assessment</Typography>
                       <Typography variant='body2' sx={{ fontSize: "14.52px", color: "#1C4980", marginTop: 2 }}>From here you can add questions of multiple types like MCQ's, subjective (text pr paragrapgh)!</Typography>
                       {/* <Typography variant='body2'>Total Assessment</Typography> */}
@@ -271,7 +314,7 @@ function Dashboard() {
                       <Divider />
                       <CardActions disableSpacing sx={{ justifyContent: 'space-between' }}>
                         <Box sx={{ display: "flex" }}>
-                          <Box sx={{paddingRight:2}}>
+                          <Box sx={{ paddingRight: 2 }}>
                             <Typography variant='body2' sx={{ fontSize: "18px", color: "#1C4980", fontWeight: 500, mt: 1 }}>00</Typography>
                             <Typography variant='body2' sx={{ fontSize: "14.52px", color: "#1C4980" }}>Duration</Typography>
                           </Box>
@@ -281,7 +324,7 @@ function Dashboard() {
                           </Box>
                         </Box>
                         <Box >
-                          <img src={share} style={{paddingRight:8}}/>
+                          <img src={share} style={{ paddingRight: 8 }} />
                           <img src={lp} />
                         </Box>
                       </CardActions>
@@ -295,7 +338,7 @@ function Dashboard() {
                       <Divider />
                       <CardActions disableSpacing sx={{ justifyContent: 'space-between' }}>
                         <Box sx={{ display: "flex" }}>
-                          <Box sx={{paddingRight:2}}>
+                          <Box sx={{ paddingRight: 2 }}>
                             <Typography variant='body2' sx={{ fontSize: "18px", color: "#1C4980", fontWeight: 500, mt: 1 }}>00</Typography>
                             <Typography variant='body2' sx={{ fontSize: "14.52px", color: "#1C4980" }}>Duration</Typography>
                           </Box>
@@ -305,14 +348,14 @@ function Dashboard() {
                           </Box>
                         </Box>
                         <Box >
-                          <img src={share} style={{paddingRight:8}} />
+                          <img src={share} style={{ paddingRight: 8 }} />
                           <img src={lp} />
                         </Box>
                       </CardActions>
                     </Item>
                   </Grid>
                 </Grid></Box>
-              <CreateAssessment modalOpen={modalOpen} setModalOpen={setModalOpen}/>
+              <CreateAssessment modalOpen={modalOpen} setModalOpen={setModalOpen} />
             </Box>
           </Grid>
         </Grid>
