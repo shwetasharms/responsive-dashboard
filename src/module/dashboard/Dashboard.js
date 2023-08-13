@@ -21,7 +21,12 @@ import dashboard from "../../assests/images/dashboard.svg"
 import assessment from "../../assests/images/assessment.svg"
 import myLibrary from "../../assests/images/myLibrary.svg"
 import admin_meds from "../../assests/images/admin_meds.svg"
+import phone from "../../assests/images/phone.svg"
+import newAssessments from "../../assests/images/newAssessments.svg"
 import math from "../../assests/images/math.svg"
+import lp from "../../assests/images/lp.svg"
+import share from "../../assests/images/share.svg"
+
 
 
 
@@ -61,11 +66,12 @@ const main = {
   height: "80vh"
 }
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+
   ...theme.typography.body2,
   padding: theme.spacing(1),
   // textAlign: 'center',
   border: "1px solid #DADCE0",
+  borderRadius: 12,
   color: theme.palette.text.secondary,
 }));
 function Dashboard() {
@@ -129,33 +135,31 @@ function Dashboard() {
                   <Tab label="My Assessments" {...a11yProps(0)} sx={{ textTransform: "none" }} />
                 </Tabs>
               </Box>
-              <Phone />
+              <img src={phone} />
             </Box>
           </Grid>
           <Grid>
-
-
             <Box sx={{ padding: "20px" }}>
               <Typography sx={{ fontSize: "18px", color: "#1C4980", paddingBottom: "16px" }}>Assessment Overview</Typography>
 
 
 
               <Box > 
-                <Grid container sx={{ height:{ lg: 130, sm: "100%" }, border: "1px solid #DADCE0", borderRadius: "12px" }}>
+                <Grid container sx={{ height:130, border: "1px solid #DADCE0", borderRadius: "12px" }}>
 
-                  <Grid xs={6} sm={6} md={6} lg={1.5} order={{ xs: 1, sm: 1 ,lg:1}} sx={{height:"100%",borderRight:"1px solid #DADCE0 "}}>
-                <Grid item   sx={{width:"100%",height:"100%",paddingLeft:"20px",display:"grid",alignContent:"Center",justifyContent:"left"}}>
+                  <Grid columns={{ xs: 4, sm: 8, md: 2, lg:2 }} sx={{height:"100%",borderRight:"1px solid #DADCE0 "}}>
+                <Grid item  order={{ xs: 1, sm: 1 ,lg:1}} sx={{width:"100%",height:"100%",paddingLeft:"20px",display:"grid",alignContent:"Center",justifyContent:"left"}}>
                   <Typography variant='body2' sx={{ fontSize: "14px", color: "#1C4980" }}>Total Assessment</Typography>
 
-                  <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-                    <img src={totalAssessment} alt="total Assessment" />
-                    <CardContent sx={{ flex: '1 0 auto' }}>
-                      <Typography  style={{ fontSize: "20px", fontWeight: 600 }}>
-                        34
-                      </Typography>
-                    </CardContent>
-                  </Box>
-                </Grid>
+                      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                        <img src={totalAssessment} alt="total Assessment" />
+                        <CardContent sx={{ flex: '1 0 auto' }}>
+                          <Typography style={{ fontSize: "20px", fontWeight: 600 }}>
+                            34
+                          </Typography>
+                        </CardContent>
+                      </Box>
+                    </Grid>
                   </Grid>
 
                 <Grid xs={12} sm={12} md={4} lg={4} order={{ xs: 3, sm: 3 ,lg:2}} sx={{height:"100%", borderRight: { lg: '1px solid #DADCE0' },borderTop: { lg:'none', xs: '1px solid #DADCE0' }}}>
@@ -189,37 +193,37 @@ function Dashboard() {
                 <Grid item   sx={{width:"100%",height:"100%",paddingLeft:"20px",display:"grid",alignContent:"Center",justifyContent:"start"}}>
                   <Typography variant='body2' sx={{ fontSize: "14px" }}>Candidates Source</Typography>
 
-                  <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-                    <img src={candidateSource} alt="candidateSource" />
-                    <CardContent sx={{ flex: '1 0 auto' }}>
-                      <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignItems: "center" }}>
-                        11,000<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
-                      </Typography>
-                      <Typography style={{ fontSize: "12px" }}>
-                        E-mail
-                      </Typography>
-                    </CardContent>
-                    <Divider orientation="vertical" variant="middle" flexItem />
-                    <CardContent sx={{ flex: '1 0 auto' }}>
-                      <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignContent: "center" }}>
-                        145<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
-                      </Typography>
-                      <Typography style={{ fontSize: "12px" }}>
-                        Social Share
-                      </Typography>
-                    </CardContent>
-                    <Divider orientation="vertical" variant="middle" flexItem />
-                    <CardContent sx={{ flex: '1 0 auto' }}>
-                      <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignItems: "center" }}>
-                        145<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
-                      </Typography>
-                      <Typography style={{ fontSize: "12px" }}>
-                        Unique Link
-                      </Typography>
-                    </CardContent>
-                  </Box>
-                </Grid>
-                </Grid>
+                      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                        <img src={candidateSource} alt="candidateSource" />
+                        <CardContent sx={{ flex: '1 0 auto' }}>
+                          <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignItems: "center" }}>
+                            11,000<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
+                          </Typography>
+                          <Typography style={{ fontSize: "12px" }}>
+                            E-mail
+                          </Typography>
+                        </CardContent>
+                        <Divider orientation="vertical" variant="middle" flexItem />
+                        <CardContent sx={{ flex: '1 0 auto' }}>
+                          <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignContent: "center" }}>
+                            145<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
+                          </Typography>
+                          <Typography style={{ fontSize: "12px" }}>
+                            Social Share
+                          </Typography>
+                        </CardContent>
+                        <Divider orientation="vertical" variant="middle" flexItem />
+                        <CardContent sx={{ flex: '1 0 auto' }}>
+                          <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignItems: "center" }}>
+                            145<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
+                          </Typography>
+                          <Typography style={{ fontSize: "12px" }}>
+                            Unique Link
+                          </Typography>
+                        </CardContent>
+                      </Box>
+                    </Grid>
+                  </Grid>
 
 
                 <Grid xs={6} sm={6}  md={6} lg={1.5} order={{ xs: 2, sm: 2 ,lg:4}} sx={{height:"100%"}}>
@@ -236,7 +240,7 @@ function Dashboard() {
                 </Grid>
                 </Grid>
 
-              </Grid>
+                </Grid>
               </Box>
 
             </Box>
@@ -244,45 +248,63 @@ function Dashboard() {
               <Typography sx={{ fontSize: "18px", color: "#1C4980", paddingBottom: "16px" }}>My Assessment</Typography>
               <Box>
                 <Grid container spacing={2}>
-                  <Grid item xs={12} md={4}>
-                    <Item>
-                      <img src={math} alt="total Assessment" />
-                      <Typography variant='body2'>Math Assessment</Typography>
-                      <Typography variant='body2'>Job</Typography>
-                      <Divider />
+                  <Grid item xs={12} md={4} >
+                    <Item sx={{ backgroundColor: "#F6F8FA", textAlign: "center", p: 4 }}>
+                      <img src={newAssessments} alt="total Assessment" />
+
+                      <Typography variant='body2' sx={{ fontSize: "18px", color: "#1C4980", fontWeight: 500 }}>New Assessment</Typography>
+                      <Typography variant='body2' sx={{ fontSize: "14.52px", color: "#1C4980", marginTop: 2 }}>From here you can add questions of multiple types like MCQ's, subjective (text pr paragrapgh)!</Typography>
                       {/* <Typography variant='body2'>Total Assessment</Typography> */}
                     </Item>
 
                   </Grid>
                   <Grid item xs={12} md={4}>
-                    <Item>
+                    <Item sx={{ p: 2 }}>
                       <img src={math} alt="total Assessment" />
-                      <Typography variant='body2'>Math Assessment</Typography>
-                      <Typography variant='body2'>Job</Typography>
+                      <Typography variant='body2' sx={{ fontSize: "18px", color: "#1C4980", fontWeight: 500, mt: 1 }}>Math Assessment</Typography>
+                      <Typography variant='body2' sx={{ fontSize: "14.52px", color: "#1C4980", pb: 3, pt: 1 }}>Job</Typography>
                       <Divider />
-                      <CardActions disableSpacing>
-                        <IconButton aria-label="add to favorites">
-                          <Favorite/>
-                        </IconButton>
-                        <IconButton aria-label="share">
-                          <Share />
-                        </IconButton>
-                        <Edit/>
+                      <CardActions disableSpacing sx={{ justifyContent: 'space-between' }}>
+                        <Box sx={{ display: "flex" }}>
+                          <Box sx={{paddingRight:2}}>
+                            <Typography variant='body2' sx={{ fontSize: "18px", color: "#1C4980", fontWeight: 500, mt: 1 }}>00</Typography>
+                            <Typography variant='body2' sx={{ fontSize: "14.52px", color: "#1C4980" }}>Duration</Typography>
+                          </Box>
+                          <Box>
+                            <Typography variant='body2' sx={{ fontSize: "18px", color: "#1C4980", fontWeight: 500, mt: 1 }}>00</Typography>
+                            <Typography variant='body2' sx={{ fontSize: "14.52px", color: "#1C4980" }}>Questions</Typography>
+                          </Box>
+                        </Box>
+                        <Box >
+                          <img src={share} style={{paddingRight:8}}/>
+                          <img src={lp} />
+                        </Box>
                       </CardActions>
-                      {/* <Typography variant='body2'>Total Assessment</Typography> */}
                     </Item>
-
-
                   </Grid>
                   <Grid item xs={12} md={4} >
-                    <Item>
+                    <Item sx={{ p: 2 }}>
                       <img src={math} alt="total Assessment" />
-                      <Typography variant='body2'>Total Assessment</Typography>
-                      <Typography variant='body2'>Total Assessment</Typography>
-                      <Typography variant='body2'>Total Assessment</Typography>
+                      <Typography variant='body2' sx={{ fontSize: "18px", color: "#1C4980", fontWeight: 500, mt: 1 }}>Math Assessment</Typography>
+                      <Typography variant='body2' sx={{ fontSize: "14.52px", color: "#1C4980", pb: 3, pt: 1 }}>Job</Typography>
+                      <Divider />
+                      <CardActions disableSpacing sx={{ justifyContent: 'space-between' }}>
+                        <Box sx={{ display: "flex" }}>
+                          <Box sx={{paddingRight:2}}>
+                            <Typography variant='body2' sx={{ fontSize: "18px", color: "#1C4980", fontWeight: 500, mt: 1 }}>00</Typography>
+                            <Typography variant='body2' sx={{ fontSize: "14.52px", color: "#1C4980" }}>Duration</Typography>
+                          </Box>
+                          <Box>
+                            <Typography variant='body2' sx={{ fontSize: "18px", color: "#1C4980", fontWeight: 500, mt: 1 }}>00</Typography>
+                            <Typography variant='body2' sx={{ fontSize: "14.52px", color: "#1C4980" }}>Questions</Typography>
+                          </Box>
+                        </Box>
+                        <Box >
+                          <img src={share} style={{paddingRight:8}} />
+                          <img src={lp} />
+                        </Box>
+                      </CardActions>
                     </Item>
-
-
                   </Grid>
                 </Grid></Box>
               <CreateAssessment />
