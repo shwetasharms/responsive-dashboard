@@ -194,11 +194,15 @@ function Dashboard() {
           <Grid>
             <Box sx={{ padding: "20px" }}>
               <Typography sx={{ fontSize: "18px", color: "#1C4980", paddingBottom: "16px" }}>Assessment Overview</Typography>
-              <Box >
-                <Grid container sx={{ height: 130, border: "1px solid #DADCE0", borderRadius: "12px" }}>
-                  <Grid columns={{ xs: 4, sm: 8, md: 2, lg: 2 }} sx={{ height: "100%", borderRight: "1px solid #DADCE0 " }}>
-                    <Grid item order={{ xs: 1, sm: 1, lg: 1 }} sx={{ width: "100%", height: "100%", paddingLeft: "20px", display: "grid", alignContent: "Center", justifyContent: "left" }}>
-                      <Typography variant='body2' sx={{ fontSize: "14px", color: "#1C4980" }}>Total Assessment</Typography>
+
+
+
+              <Box > 
+                <Grid container sx={{ height:{lg:130,xs:"100%"}, border: "1px solid #DADCE0", borderRadius: "12px" }}>
+
+                  <Grid xs={6} sm={12} md={4} lg={1.5} order={{ xs: 1, sm: 1 ,lg:1}} sx={{height:"100%",borderRight:"1px solid #DADCE0 "}}>
+                <Grid item   sx={{width:"100%",height:"100%",paddingLeft:"20px",display:"grid", paddingTop:{xs:"10px",lg:0,md:0},alignContent:"Center",justifyContent:"left"}}>
+                  <Typography variant='body2' sx={{ fontSize: "14px", color: "#1C4980" }}>Total Assessment</Typography>
 
                       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                         <img src={totalAssessment} alt="total Assessment" />
@@ -211,36 +215,36 @@ function Dashboard() {
                     </Grid>
                   </Grid>
 
-                  <Grid xs={2} sm={2} md={4} lg={4} sx={{ height: "100%", borderRight: "1px solid #DADCE0 " }}>
-                    <Grid item order={{ xs: 3, sm: 3, lg: 2 }} sx={{ height: "100%", paddingLeft: "20px", display: "grid", alignContent: "center", justifyContent: "start" }}>
-                      <Typography variant='body2' sx={{ fontSize: "14px" }}>Candidates Source</Typography>
-                      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-                        <img src={candidates} alt="candidates" />
-                        <CardContent sx={{ flex: '1 0 auto' }}>
-                          <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignItems: "center" }}>
-                            11,145<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
-                          </Typography>
-                          <Typography style={{ fontSize: "12px" }}>
-                            Total Candidate
-                          </Typography>
-                        </CardContent>
-                        <Divider orientation="vertical" variant="middle" flexItem />
-                        <CardContent sx={{ flex: '1 0 auto' }}>
-                          <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignItems: "center" }}>
-                            1,14<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
-                          </Typography>
-                          <Typography style={{ fontSize: "12px" }}>
-                            Who Attempt
-                          </Typography>
-                        </CardContent>
-                      </Box>
-                    </Grid>
-                  </Grid>
+                <Grid xs={12} sm={12} md={4} lg={4} order={{ xs: 3, sm: 3 ,lg:2}} sx={{height:"100%", borderRight: { lg: '1px solid #DADCE0' },borderTop: { lg:'none', xs: '1px solid #DADCE0' }}}>
+                <Grid item    sx={{height:"100%",paddingLeft:"20px",display:"grid" , paddingTop:{xs:"10px",lg:0,md:0},alignContent:"center" ,justifyContent:"start"}}>
+                  <Typography variant='body2' sx={{ fontSize: "14px" }}>Candidates Source</Typography>
+                  <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                    <img src={candidates} alt="candidates" />
+                    <CardContent sx={{ flex: '1 0 auto' }}>
+                      <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignItems: "center" }}>
+                        11,145<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
+                      </Typography>
+                      <Typography style={{ fontSize: "12px" }}>
+                        Total Candidate
+                      </Typography>
+                    </CardContent>
+                    <Divider orientation="vertical" variant="middle" flexItem sx={{height:"41px",alignSelf:"center"}} />
+                    <CardContent sx={{ flex: '1 0 auto' }}>
+                      <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignItems: "center" }}>
+                        1,14<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
+                      </Typography>
+                      <Typography style={{ fontSize: "12px" }}>
+                        Who Attempt
+                      </Typography>
+                    </CardContent>
+                  </Box>
+                </Grid>
+                </Grid>
 
 
-                  <Grid xs={2} sm={2} md={5} lg={5} sx={{ height: "100%", borderRight: "1px solid #DADCE0 " }}>
-                    <Grid item order={{ xs: 4, sm: 4, lg: 3 }} sx={{ width: "100%", height: "100%", paddingLeft: "20px", display: "grid", alignContent: "Center", justifyContent: "start" }}>
-                      <Typography variant='body2' sx={{ fontSize: "14px" }}>Candidates Source</Typography>
+                <Grid xs={12} sm={12} md={5} lg={5} order={{ xs: 4, sm: 4,lg:3}} sx={{height:"100%",borderRight: { lg: '1px solid #DADCE0' },borderTop: { lg:'none', xs: '1px solid #DADCE0' }}}>
+                <Grid item   sx={{width:"100%",height:"100%",paddingLeft:"20px" , paddingTop:{xs:"10px",lg:0,md:0},display:"grid",alignContent:"Center",justifyContent:"start"}}>
+                  <Typography variant='body2' sx={{ fontSize: "14px" }}>Candidates Source</Typography>
 
                       <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                         <img src={candidateSource} alt="candidateSource" />
@@ -252,7 +256,7 @@ function Dashboard() {
                             E-mail
                           </Typography>
                         </CardContent>
-                        <Divider orientation="vertical" variant="middle" flexItem />
+                        <Divider orientation="vertical" variant="middle" flexItem sx={{height:"41px",alignSelf:"center"}} />
                         <CardContent sx={{ flex: '1 0 auto' }}>
                           <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignContent: "center" }}>
                             145<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
@@ -261,7 +265,7 @@ function Dashboard() {
                             Social Share
                           </Typography>
                         </CardContent>
-                        <Divider orientation="vertical" variant="middle" flexItem />
+                        <Divider orientation="vertical" variant="middle" flexItem sx={{height:"41px",alignSelf:"center"}} />
                         <CardContent sx={{ flex: '1 0 auto' }}>
                           <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600, display: "flex", alignItems: "center" }}>
                             145<Typography style={{ fontSize: "12px", color: "#05C165", paddingLeft: "2px" }}>+89</Typography>
@@ -275,19 +279,19 @@ function Dashboard() {
                   </Grid>
 
 
-                  <Grid sx={{ height: "100%" }}>
-                    <Grid item order={{ xs: 2, sm: 2, lg: 4 }} sx={{ width: "100%", height: "100%", paddingLeft: "20px", display: "grid", alignItems: "Center", justifyContent: "start" }} >
-                      <Typography variant='body2' sx={{ fontSize: "14px" }}>Total Purpose</Typography>
-                      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-                        <img src={totalAssessment} alt="total Assessment" />
-                        <CardContent sx={{ flex: '1 0 auto' }}>
-                          <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600 }}>
-                            34
-                          </Typography>
-                        </CardContent>
-                      </Box>
-                    </Grid>
-                  </Grid>
+                <Grid xs={6} sm={6}  md={6} lg={1.5} order={{ xs: 2, sm: 2 ,lg:4}} sx={{height:"100%"}}>
+                <Grid item   sx={{width:"100%",height:"100%",paddingLeft:"20px",display:"grid", paddingTop:{xs:"10px",lg:0,md:0},alignItems:"Center",justifyContent:"start"}} >
+                  <Typography variant='body2' sx={{ fontSize: "14px" }}>Total Purpose</Typography>
+                  <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                    <img src={totalAssessment} alt="total Assessment" />
+                    <CardContent sx={{ flex: '1 0 auto' }}>
+                      <Typography variant="body2" style={{ fontSize: "20px", fontWeight: 600 }}>
+                        34
+                      </Typography>
+                    </CardContent>
+                  </Box>
+                </Grid>
+                </Grid>
 
                 </Grid>
               </Box>
